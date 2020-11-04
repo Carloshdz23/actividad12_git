@@ -3,29 +3,55 @@
 
 using namespace std;
 
-void modificar(int *a)
-{
-    *a = *a + 1;
-}
-
 int main()
 {
-    ArregloDinamico arreglo;
-    arreglo.insertar_final("de");
-    arreglo.insertar_final("los");
-    arreglo.insertar_final("ojos");
-    arreglo.insertar_final("tristes");
-    arreglo.insertar_final("Vive");
-    arreglo.insertar_final("solo");
-    arreglo.insertar_final("y");
-    arreglo.insertar_final("necesita amor");
-    arreglo.insertar_inicio("muchacho");
-    arreglo.insertar_inicio("El");
+    Arreglo<string> arreglo;
+
+    arreglo.insertar_inicio("como");
+    arreglo.insertar_inicio("Hola,");
+    arreglo.insertar_final("estas?");
+    arreglo.insertar_final("Adios");
+    
+    for (size_t i = 0; i < arreglo.size(); i++)
+    {
+        cout << arreglo[i] << " ";
+    }
+
+    cout << endl;
+
+    arreglo.mostrar();
+
+    arreglo.insertar("tu", 2);
 
     for (size_t i = 0; i < arreglo.size(); i++)
     {
         cout << arreglo[i] << " ";
     }
+
+    cout << endl;
+
+    arreglo.mostrar();
+
+    arreglo.eliminar_inicio();
+    arreglo.eliminar_final();
+
+    for (size_t i = 0; i < arreglo.size(); i++)
+    {
+        cout << arreglo[i] << " ";
+    }
+
+    cout << endl;
+
+    arreglo.eliminar(1);
+
+    for (size_t i = 0; i < arreglo.size(); i++)
+    {
+        cout << arreglo[i] << " ";
+    }
+
+    cout << endl;
+
+    arreglo.mostrar();
 
     return 0;
 }
