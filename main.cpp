@@ -1,30 +1,62 @@
 #include <iostream>
 #include "arreglo.h"
+#include "computadora.h"
 
 using namespace std;
 
-void modificar(int *a)
-{
-    *a = *a + 1;
-}
-
 int main()
 {
-    ArregloDinamico arreglo;
-    arreglo.insertar_final("de");
-    arreglo.insertar_final("los");
-    arreglo.insertar_final("ojos");
-    arreglo.insertar_final("tristes");
-    arreglo.insertar_final("Vive");
-    arreglo.insertar_final("solo");
-    arreglo.insertar_final("y");
-    arreglo.insertar_final("necesita amor");
-    arreglo.insertar_inicio("muchacho");
-    arreglo.insertar_inicio("El");
+    Arreglo<Computadora> arreglo;
 
-    for (size_t i = 0; i < arreglo.size(); i++)
+    Computadora n01("Computadora de Carlos", "Windows", "32 GB", "1 TB");
+    Computadora n02("Computadora de David", "iOs", "8 GB", "1 TB");
+    Computadora n03("Computadora de Lionel", "Linux", "8 GB", "500 GB");
+    Computadora n04("Computadora de David", "Windows", "64 GB", "2 TB");
+    Computadora n05("Computadora de David", "iOs", "6 GB", "500 GB");
+
+    arreglo << n01 << n02 << n03 << n04 << n05;
+
+    arreglo.mostrar();
+
+    cout << endl;
+
+    Computadora n06("Computadora de David", "iOs", "16 GB", "1 TB");
+    Computadora n07("Computadora de Irina", "Linux", "8 GB", "800 GB");
+
+    Computadora *ptr = arreglo.buscar(n06);
+
+    if(ptr != nullptr)
     {
-        cout << arreglo[i] << " ";
+        cout << *ptr << endl << endl;
+    }
+    else
+    {
+        cout << "No Existe" << endl;
+    }
+
+    cout << *ptr << endl << endl;
+    
+    Arreglo<Computadora*> ptrs = arreglo.buscar_todos(n06);
+    
+    if(ptrs.size() > 0)
+    {
+        for (size_t i = 0; i < ptrs.size(); i++)
+        {
+            Computadora *p = ptrs[i];
+            cout << *p << endl;
+        }
+    }
+    else
+    {
+        cout << "No Existen Coincidencias" << endl;
+    }
+
+    cout << endl;
+
+    for (size_t i = 0; i < ptrs.size(); i++)
+    {
+        Computadora *p = ptrs[i];
+        cout << *p << endl;
     }
 
     return 0;
